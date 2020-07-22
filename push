@@ -1,29 +1,37 @@
 #!/bin/bash
 
+set -eux
+
+IMAGE_PREFIX=${IMAGE_PREFIX:-minimalcompact}
+
+BRANCH=$1
 # introspecting version by running the built image
-THUMBOR_VERSION=`docker run --rm minimalcompact/thumbor bash -c "pip freeze |grep ^thumbor== | cut -d= -f 3"`
-echo "THUMBOR VERSION: $THUMBOR_VERSION"
+THUMBOR_VERSION=$(docker run --rm "${IMAGE_PREFIX}/thumbor" bash -c "pip freeze |grep ^thumbor== | cut -d= -f 3")
+echo "THUMBOR VERSION: ${THUMBOR_VERSION}"
 
-echo "--> pushing minimalcompact/thumbor:simdsse4"
-docker push minimalcompact/thumbor:latest-simd-sse4
-docker push minimalcompact/thumbor:$THUMBOR_VERSION-simd-sse4
+echo "--> pushing ${IMAGE_PREFIX}/python-boost"
+[ "$BRANCH" == "master" ] && docker push "${IMAGE_PREFIX}/python-boost"
 
-echo "--> pushing minimalcompact/thumbor:simdavx2"
-docker push minimalcompact/thumbor:latest-simd-avx2
-docker push minimalcompact/thumbor:$THUMBOR_VERSION-simd-avx2
+echo "--> pushing ${IMAGE_PREFIX}/thumbor:simdsse4"
+[ "$BRANCH" == "master" ] && docker push "${IMAGE_PREFIX}/thumbor:latest-simd-sse4"
+docker push "${IMAGE_PREFIX}/thumbor:${THUMBOR_VERSION}-simd-sse4"
 
-echo "--> pushing minimalcompact/thumbor-nginx-proxy (DEPRECATED)"
-docker push minimalcompact/thumbor-nginx-proxy:latest
-docker push minimalcompact/thumbor-nginx-proxy:$THUMBOR_VERSION
+echo "--> pushing ${IMAGE_PREFIX}/thumbor:simdavx2"
+[ "$BRANCH" == "master" ] && docker push "${IMAGE_PREFIX}/thumbor:latest-simd-avx2"
+docker push "${IMAGE_PREFIX}/thumbor:${THUMBOR_VERSION}-simd-avx2"
 
-echo "--> pushing minimalcompact/thumbor-nginx-proxy-cache"
-docker push minimalcompact/thumbor-nginx-proxy-cache:latest
-docker push minimalcompact/thumbor-nginx-proxy-cache:$THUMBOR_VERSION
+echo "--> pushing ${IMAGE_PREFIX}/thumbor-nginx-proxy (DEPRECATED)"
+[ "$BRANCH" == "master" ] && docker push "${IMAGE_PREFIX}/thumbor-nginx-proxy:latest"
+docker push "${IMAGE_PREFIX}/thumbor-nginx-proxy:${THUMBOR_VERSION}"
 
-echo "--> pushing minimalcompact/remotecv"
-docker push minimalcompact/remotecv:latest
-docker push minimalcompact/remotecv:$THUMBOR_VERSION
+echo "--> pushing ${IMAGE_PREFIX}/thumbor-nginx-proxy-cache"
+[ "$BRANCH" == "master" ] && docker push "${IMAGE_PREFIX}/thumbor-nginx-proxy-cache:latest"
+docker push "${IMAGE_PREFIX}/thumbor-nginx-proxy-cache:${THUMBOR_VERSION}"
 
-echo "--> pushing minimalcompact/thumbor"
-docker push minimalcompact/thumbor:latest
-docker push minimalcompact/thumbor:$THUMBOR_VERSION
+echo "--> pushing ${IMAGE_PREFIX}/remotecv"
+[ "$BRANCH" == "master" ] && docker push "${IMAGE_PREFIX}/remotecv:latest"
+docker push "${IMAGE_PREFIX}/remotecv:${THUMBOR_VERSION}"
+
+echo "--> pushing ${IMAGE_PREFIX}/thumbor"
+[ "$BRANCH" == "master" ] && docker push "${IMAGE_PREFIX}/thumbor:latest"
+docker push "${IMAGE_PREFIX}/thumbor:${THUMBOR_VERSION}"
