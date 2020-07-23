@@ -10,7 +10,7 @@ botocore==1.17.26         # via tornado-botocore
 cairocffi==1.1.0          # via cairosvg
 cairosvg==2.4.2           # via -r requirements.in
 cffi==1.14.0              # via cairocffi
-git+https://github.com/circus-tent/circus.git@2bedab09145a4959ce02b93777dbffbce56edd8e#egg=circus  # via -r requirements.in, circus-web
+git+https://github.com/circus-tent/circus.git@eba705ba124a96407855e7c9788ec0855be9911a#egg=circus  # via -r requirements.in, circus-web
 circus-web==1.0.0         # via -r requirements.in
 colour==0.1.5             # via opencv-engine
 cssselect2==0.3.0         # via cairosvg
