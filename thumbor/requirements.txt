@@ -54,6 +54,7 @@ setproctitle==1.1.10      # via pyres
 shortuuid==1.0.1          # via tc-shortener
 simplejson==3.17.2        # via pyres, tornadio2
 six==1.15.0               # via circus-web, derpconf, gcloud, libthumbor, oauth2client, protobuf, python-dateutil, thumbor
+socketfromfd==0.2.0       # via thumbor
 statsd==3.3.0             # via thumbor
 tc-aws==6.2.15            # via -r requirements.in
 tc-core==0.4.1            # via -r requirements.in, tc-shortener
@@ -63,7 +64,7 @@ tc-redis==1.0.1           # via -r requirements.in
 tc-shortener==0.2.2       # via -r requirements.in
 thumbor-cloud-storage==3.0.0  # via -r requirements.in
 thumbor-memcached==5.1.0  # via -r requirements.in
-thumbor==6.7.5            # via -r requirements.in, graphicsmagick-engine, opencv-engine, tc-aws, tc-core, tc-mongodb, tc-prometheus, tc-redis, tc-shortener, thumbor-cloud-storage, thumbor-memcached
+git+https://github.com/demosdemon/thumbor.git@1cc9fd331f116d51bedc7e35be556672023429a6#egg=thumbor  # via -r requirements.in, graphicsmagick-engine, opencv-engine, tc-aws, tc-core, tc-mongodb, tc-prometheus, tc-redis, tc-shortener, thumbor-cloud-storage, thumbor-memcached
 tinycss2==1.0.2           # via cairosvg, cssselect2
 tomako==0.1.0.post1       # via circus-web
 tornadio2==0.0.3          # via circus-web
