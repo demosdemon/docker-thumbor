@@ -1,5 +1,4 @@
-# thumbor==6.7.5
-git+https://github.com/demosdemon/thumbor.git@6088853e0a4b1342eadedece2c2a9088ce94bfb9#egg=thumbor
+thumbor==7.0.0a5
 tornado>=5.1.0
 remotecv<3.0.0,>=2.0.0
 
@@ -15,7 +14,8 @@ opencv-engine
 # opencv-python
 raven
 tc-prometheus
-tc-aws
+# tc-aws
+git+https://github.com/kkopachev/aws.git@b5058e6b9fec7354629acc6d5df423e0310bb0cd#egg=tc_aws
 tc-core
 tc-mongodb
 tc-redis

@@ -17,3 +17,4 @@
 
 recipes/**/data
 tests/**/data
+.cache

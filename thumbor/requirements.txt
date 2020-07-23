@@ -4,14 +4,21 @@
 #
 #    pip-compile --allow-unsafe
 #
+aiobotocore==1.0.7        # via tc-aws
+aiohttp==3.6.2            # via aiobotocore
+aioitertools==0.7.0       # via aiobotocore
 anyjson==0.3.3            # via circus-web
-argparse==1.2.2           # via dateutils, envtpl, remotecv, thumbor
-botocore==1.17.26         # via tornado-botocore
+argparse==1.2.2           # via dateutils, envtpl, remotecv
+async-timeout==3.0.1      # via aiohttp
+attrs==19.3.0             # via aiohttp
+botocore==1.15.32         # via aiobotocore
 cairocffi==1.1.0          # via cairosvg
 cairosvg==2.4.2           # via -r requirements.in
 cffi==1.14.0              # via cairocffi
+chardet==3.0.4            # via aiohttp
 git+https://github.com/circus-tent/circus.git@2bedab09145a4959ce02b93777dbffbce56edd8e#egg=circus  # via -r requirements.in, circus-web
 circus-web==1.0.0         # via -r requirements.in
+colorful==0.5.4           # via thumbor
 colour==0.1.5             # via opencv-engine
 cssselect2==0.3.0         # via cairosvg
 dateutils==0.6.8          # via -r requirements.in
@@ -19,32 +26,34 @@ defusedxml==0.6.0         # via cairosvg
 derpconf==0.8.3           # via thumbor
 docutils==0.15.2          # via botocore
 envtpl==0.6.0             # via -r requirements.in
-futures==3.1.1            # via thumbor
 gcloud==0.18.3            # via thumbor-cloud-storage
 googleapis-common-protos==1.52.0  # via gcloud
 graphicsmagick-engine==0.1.1  # via -r requirements.in
 httplib2==0.18.1          # via gcloud, oauth2client
+idna==2.10                # via yarl
 jinja2==2.11.2            # via envtpl
 jmespath==0.10.0          # via botocore
 libthumbor==2.0.1         # via tc-core, thumbor
 mako==1.1.3               # via circus-web, tomako
 markupsafe==1.1.1         # via circus-web, jinja2, mako
+multidict==4.7.6          # via aiohttp, yarl
+numpy==1.19.1             # via opencv-python-headless
 oauth2client==4.1.3       # via gcloud
 opencv-engine==1.0.1      # via -r requirements.in
+opencv-python-headless==4.3.0.36  # via thumbor
 pgmagick==0.7.5           # via graphicsmagick-engine
-pillow==6.2.2             # via cairosvg, remotecv, thumbor
+pillow==7.2.0             # via cairosvg, remotecv, thumbor
 prometheus-client==0.8.0  # via tc-prometheus
 protobuf==3.12.2          # via gcloud, googleapis-common-protos
 psutil==5.7.2             # via circus
 pyasn1-modules==0.2.8     # via oauth2client
 pyasn1==0.4.8             # via oauth2client, pyasn1-modules, rsa
 pycparser==2.20           # via cffi
-pycurl==7.43.0.5          # via thumbor
 pylibmc==1.6.1            # via thumbor-memcached
 pymongo==3.10.1           # via tc-mongodb
 pyres==1.5                # via remotecv
 python-dateutil==2.8.1    # via botocore, dateutils, tc-aws
-pytz==2020.1              # via dateutils, thumbor
+pytz==2019.3              # via dateutils, thumbor
 pyzmq==19.0.1             # via circus, circus-web
 raven==6.10.0             # via -r requirements.in
 redis==3.5.3              # via pyres, tc-redis, tc-shortener
@@ -53,26 +62,27 @@ rsa==4.6                  # via oauth2client
 setproctitle==1.1.10      # via pyres
 shortuuid==1.0.1          # via tc-shortener
 simplejson==3.17.2        # via pyres, tornadio2
-six==1.15.0               # via circus-web, derpconf, gcloud, libthumbor, oauth2client, protobuf, python-dateutil, thumbor
-socketfromfd==0.2.0       # via thumbor
+six==1.15.0               # via circus-web, derpconf, gcloud, libthumbor, oauth2client, protobuf, python-dateutil
 statsd==3.3.0             # via thumbor
-tc-aws==6.2.15            # via -r requirements.in
 tc-core==0.4.1            # via -r requirements.in, tc-shortener
 tc-mongodb==5.1.0         # via -r requirements.in
 tc-prometheus==0.1.1      # via -r requirements.in
 tc-redis==1.0.1           # via -r requirements.in
 tc-shortener==0.2.2       # via -r requirements.in
+git+https://github.com/kkopachev/aws.git@b5058e6b9fec7354629acc6d5df423e0310bb0cd#egg=tc_aws  # via -r requirements.in
 thumbor-cloud-storage==3.0.0  # via -r requirements.in
 thumbor-memcached==5.1.0  # via -r requirements.in
-git+https://github.com/demosdemon/thumbor.git@6088853e0a4b1342eadedece2c2a9088ce94bfb9#egg=thumbor  # via -r requirements.in, graphicsmagick-engine, opencv-engine, tc-aws, tc-core, tc-mongodb, tc-prometheus, tc-redis, tc-shortener, thumbor-cloud-storage, thumbor-memcached
+thumbor==7.0.0a5          # via -r requirements.in, graphicsmagick-engine, opencv-engine, tc-aws, tc-core, tc-mongodb, tc-prometheus, tc-redis, tc-shortener, thumbor-cloud-storage, thumbor-memcached
 tinycss2==1.0.2           # via cairosvg, cssselect2
 tomako==0.1.0.post1       # via circus-web
 tornadio2==0.0.3          # via circus-web
-tornado-botocore==1.5.0   # via tc-aws
-tornado==5.1.1            # via -r requirements.in, circus, circus-web, thumbor, tomako, tornadio2, tornado-botocore
+tornado==6.0.4            # via -r requirements.in, circus, circus-web, thumbor, tomako, tornadio2
+typing-extensions==3.7.4.2  # via aioitertools
 urllib3==1.25.10          # via botocore
 webcolors==1.11.1         # via thumbor
 webencodings==0.5.1       # via cssselect2, tinycss2
+wrapt==1.12.1             # via aiobotocore
+yarl==1.4.2               # via aiohttp
 
 # The following packages are considered to be unsafe in a requirements file:
 setuptools==49.2.0        # via cairocffi, cssselect2, protobuf, tinycss2
