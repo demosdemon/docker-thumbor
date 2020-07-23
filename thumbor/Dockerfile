@@ -59,10 +59,6 @@ RUN set -eux; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
     rm -rf /var/lib/apt/lists/*;
 
-COPY conf/thumbor.conf.tpl /app/thumbor.conf.tpl
-COPY conf/circus.ini.tpl /etc/circus.ini.tpl
-COPY conf/thumbor-circus.ini.tpl /etc/circus.d/thumbor-circus.ini.tpl
-
 ARG SIMD_LEVEL
 
 RUN set -eux; \
@@ -121,6 +117,10 @@ RUN set -eux; \
     ; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
     rm -rf /var/lib/apt/lists/*;
+
+COPY conf/thumbor.conf.tpl /app/thumbor.conf.tpl
+COPY conf/circus.ini.tpl /etc/circus.ini.tpl
+COPY conf/thumbor-circus.ini.tpl /etc/circus.d/thumbor-circus.ini.tpl
 
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
