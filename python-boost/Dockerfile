@@ -15,7 +15,7 @@ RUN set -eux; \
     ; \
     apt-get clean; \
     \
-    # We have to compile boost ourselves against the docker Python and cannot use Debian package.
+# We have to compile boost ourselves against the docker Python and cannot use Debian package.
     cd /usr/src; \
     curl -fsSLO --compressed --retry 3 https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.gz; \
     tar xzf boost_1_73_0.tar.gz; \

@@ -95,9 +95,9 @@ RUN set -eux; \
     \
     { pip uninstall -y pillow || true; } && \
     CC=$CC \
-    # https://github.com/python-pillow/Pillow/pull/3241
+# https://github.com/python-pillow/Pillow/pull/3241
     LIB=/usr/lib/x86_64-linux-gnu/ \
-    # https://github.com/python-pillow/Pillow/pull/3237 or https://github.com/python-pillow/Pillow/pull/3245
+# https://github.com/python-pillow/Pillow/pull/3237 or https://github.com/python-pillow/Pillow/pull/3245
     INCLUDE=/usr/include/x86_64-linux-gnu/ \
     pip install --no-cache-dir -U --force-reinstall --no-binary=:all: "${PILLOW_PACKET}<=${PILLOW_VERSION}${PILLOW_VERSION_SUFFIX}" \
         --global-option="build_ext" --global-option="--debug" \
