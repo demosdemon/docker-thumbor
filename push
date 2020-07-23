@@ -9,29 +9,23 @@ BRANCH=$1
 THUMBOR_VERSION=$(docker run --rm "${IMAGE_PREFIX}/thumbor" bash -c "pip freeze |grep ^thumbor== | cut -d= -f 3")
 echo "THUMBOR VERSION: ${THUMBOR_VERSION}"
 
-echo "--> pushing ${IMAGE_PREFIX}/python-boost"
-[ "$BRANCH" == "master" ] && docker push "${IMAGE_PREFIX}/python-boost"
+@push() {
+    local -r img=$1 tag=${2:-} latest=${3:-latest}
+    if [ "$tag" ]; then
+        echo "--> PUSHING $img:$tag"
+        docker push "$img:$tag"
+    fi
+    if [ "$BRANCH" == "master" ]; then
+        echo "--> PUSHING $img:$latest"
+        docker push "$img:$latest"
+    fi
+}
 
-echo "--> pushing ${IMAGE_PREFIX}/thumbor:simdsse4"
-[ "$BRANCH" == "master" ] && docker push "${IMAGE_PREFIX}/thumbor:latest-simd-sse4"
-docker push "${IMAGE_PREFIX}/thumbor:${THUMBOR_VERSION}-simd-sse4"
-
-echo "--> pushing ${IMAGE_PREFIX}/thumbor:simdavx2"
-[ "$BRANCH" == "master" ] && docker push "${IMAGE_PREFIX}/thumbor:latest-simd-avx2"
-docker push "${IMAGE_PREFIX}/thumbor:${THUMBOR_VERSION}-simd-avx2"
-
-echo "--> pushing ${IMAGE_PREFIX}/thumbor-nginx-proxy (DEPRECATED)"
-[ "$BRANCH" == "master" ] && docker push "${IMAGE_PREFIX}/thumbor-nginx-proxy:latest"
-docker push "${IMAGE_PREFIX}/thumbor-nginx-proxy:${THUMBOR_VERSION}"
-
-echo "--> pushing ${IMAGE_PREFIX}/thumbor-nginx-proxy-cache"
-[ "$BRANCH" == "master" ] && docker push "${IMAGE_PREFIX}/thumbor-nginx-proxy-cache:latest"
-docker push "${IMAGE_PREFIX}/thumbor-nginx-proxy-cache:${THUMBOR_VERSION}"
-
-echo "--> pushing ${IMAGE_PREFIX}/remotecv"
-[ "$BRANCH" == "master" ] && docker push "${IMAGE_PREFIX}/remotecv:latest"
-docker push "${IMAGE_PREFIX}/remotecv:${THUMBOR_VERSION}"
-
-echo "--> pushing ${IMAGE_PREFIX}/thumbor"
-[ "$BRANCH" == "master" ] && docker push "${IMAGE_PREFIX}/thumbor:latest"
-docker push "${IMAGE_PREFIX}/thumbor:${THUMBOR_VERSION}"
+@push "${IMAGE_PREFIX}/python-boost"
+@push "${IMAGE_PREFIX}/thumbor-simd-sse4"
+@push "${IMAGE_PREFIX}/thumbor-simd-avx2"
+@push "${IMAGE_PREFIX}/thumbor-nginx-proxy" "${THUMBOR_VERSION}"
+@push "${IMAGE_PREFIX}/thumbor-nginx-proxy-cache" "${THUMBOR_VERSION}"
+@push "${IMAGE_PREFIX}/thumbor" "${THUMBOR_VERSION}"
+@push "${IMAGE_PREFIX}/thumbor" "${THUMBOR_VERSION}-simd-sse4" latest-simd-sse4
+@push "${IMAGE_PREFIX}/thumbor" "${THUMBOR_VERSION}-simd-avx2" latest-simd-avx2
