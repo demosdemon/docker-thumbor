@@ -1,5 +1,6 @@
+ARG IMAGE_PREFIX=minimalcompact
 ARG THUMBOR_TAG=latest
-FROM minimalcompact/thumbor:$THUMBOR_TAG
+FROM ${IMAGE_PREFIX}/thumbor:$THUMBOR_TAG
 
 LABEL maintainer="MinimalCompact"
 
