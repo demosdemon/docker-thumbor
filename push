@@ -6,7 +6,7 @@ IMAGE_PREFIX=${IMAGE_PREFIX:-minimalcompact}
 
 BRANCH=$1
 # introspecting version by running the built image
-THUMBOR_VERSION=$(docker run --rm "${IMAGE_PREFIX}/thumbor" bash -c "pip freeze |grep ^thumbor== | cut -d= -f 3")
+THUMBOR_VERSION=$(docker run --rm "${IMAGE_PREFIX}/thumbor" bash -c "python -c 'import thumbor; print(thumbor.__version__)'")
 echo "THUMBOR VERSION: ${THUMBOR_VERSION}"
 
 @push() {
