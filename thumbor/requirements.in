@@ -1,5 +1,5 @@
 # thumbor==6.7.5
-git+https://github.com/demosdemon/thumbor.git@eba705ba124a96407855e7c9788ec0855be9911a#egg=thumbor
+git+https://github.com/demosdemon/thumbor.git@6088853e0a4b1342eadedece2c2a9088ce94bfb9#egg=thumbor
 tornado>=5.1.0
 remotecv<3.0.0,>=2.0.0
 

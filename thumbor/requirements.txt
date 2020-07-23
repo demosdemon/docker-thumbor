@@ -64,7 +64,7 @@ tc-redis==1.0.1           # via -r requirements.in
 tc-shortener==0.2.2       # via -r requirements.in
 thumbor-cloud-storage==3.0.0  # via -r requirements.in
 thumbor-memcached==5.1.0  # via -r requirements.in
-git+https://github.com/demosdemon/thumbor.git@eba705ba124a96407855e7c9788ec0855be9911a#egg=thumbor  # via -r requirements.in, graphicsmagick-engine, opencv-engine, tc-aws, tc-core, tc-mongodb, tc-prometheus, tc-redis, tc-shortener, thumbor-cloud-storage, thumbor-memcached
+git+https://github.com/demosdemon/thumbor.git@6088853e0a4b1342eadedece2c2a9088ce94bfb9#egg=thumbor  # via -r requirements.in, graphicsmagick-engine, opencv-engine, tc-aws, tc-core, tc-mongodb, tc-prometheus, tc-redis, tc-shortener, thumbor-cloud-storage, thumbor-memcached
 tinycss2==1.0.2           # via cairosvg, cssselect2
 tomako==0.1.0.post1       # via circus-web
 tornadio2==0.0.3          # via circus-web
