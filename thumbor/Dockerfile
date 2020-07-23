@@ -79,6 +79,7 @@ RUN set -eux; \
         libssh2-1-dev \
         libssl-dev \
         libtiff5-dev \
+        libcairo2-dev \
     ; \
     apt-get clean; \
     \
@@ -106,7 +107,7 @@ RUN set -eux; \
     ; \
     \
     apt-mark auto '.*' > /dev/null; \
-    apt-mark manual $savedAptMark; \
+    apt-mark manual libcairo2 $savedAptMark; \
     find /usr/local -type f -executable -exec ldd '{}' ';' \
         | awk '/=>/ { print $(NF-1) }' \
         | sort -u \
