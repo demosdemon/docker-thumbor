@@ -40,7 +40,7 @@ apt-get clean;
 
 pip install -U pipenv pip-tools "clikit<0.5.0,>=0.4.2" poetry
 
-pip-compile --rebuild --verbose --header --annotate --upgrade --allow-unsafe --cache-dir /src/.cache
+pip-compile --rebuild --verbose --header --annotate --upgrade --allow-unsafe
 EOF
 )
 
