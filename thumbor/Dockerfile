@@ -41,13 +41,15 @@ RUN set -eux; \
         libmemcached-dev \
         libssh2-1-dev \
         libssl-dev \
+        libcairo2-dev \
+        graphicsmagick \
     ; \
     apt-get clean; \
     \
     pip install --no-cache-dir -r requirements.txt; \
     \
     apt-mark auto '.*' > /dev/null; \
-    apt-mark manual $savedAptMark; \
+    apt-mark manual libcairo2 graphicsmagick $savedAptMark; \
     find /usr/local -type f -executable -exec ldd '{}' ';' \
         | awk '/=>/ { print $(NF-1) }' \
         | sort -u \
@@ -79,7 +81,6 @@ RUN set -eux; \
         libssh2-1-dev \
         libssl-dev \
         libtiff5-dev \
-        libcairo2-dev \
     ; \
     apt-get clean; \
     \
@@ -107,7 +108,7 @@ RUN set -eux; \
     ; \
     \
     apt-mark auto '.*' > /dev/null; \
-    apt-mark manual libcairo2 $savedAptMark; \
+    apt-mark manual $savedAptMark; \
     find /usr/local -type f -executable -exec ldd '{}' ';' \
         | awk '/=>/ { print $(NF-1) }' \
         | sort -u \
