@@ -1,0 +1,23 @@
+thumbor==6.7.5
+tornado>=5.1.0
+remotecv<3.0.0,>=2.0.0
+
+# circus
+git+https://github.com/circus-tent/circus.git@2bedab09145a4959ce02b93777dbffbce56edd8e#egg=circus
+
+cairosvg
+circus-web
+dateutils
+envtpl
+graphicsmagick-engine
+opencv-engine
+# opencv-python
+raven
+tc-prometheus
+tc-aws
+tc-core
+tc-mongodb
+tc-redis
+tc-shortener
+thumbor-cloud-storage
+thumbor-memcached
