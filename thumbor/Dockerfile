@@ -44,13 +44,23 @@ RUN set -eux; \
         libssl-dev \
         libcairo2-dev \
         graphicsmagick \
+        jpegtran \
+        ffmpeg \
+        gifsicle \
     ; \
     apt-get clean; \
     \
     pip install --no-cache-dir -r requirements.txt; \
     \
     apt-mark auto '.*' > /dev/null; \
-    apt-mark manual curl libcairo2 graphicsmagick $savedAptMark; \
+    apt-mark manual \
+        curl \
+        libcairo2 \
+        graphicsmagick \
+        jpegtran \
+        ffmpeg \
+        gifsicle \
+        $savedAptMark; \
     find /usr/local -type f -executable -exec ldd '{}' ';' \
         | awk '/=>/ { print $(NF-1) }' \
         | sort -u \
