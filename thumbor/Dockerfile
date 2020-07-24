@@ -48,6 +48,7 @@ RUN set -eux; \
     apt-get clean; \
     \
     pip install --no-cache-dir -r requirements.txt; \
+    thumbor-doctor; \
     \
     apt-mark auto '.*' > /dev/null; \
     apt-mark manual curl libcairo2 graphicsmagick $savedAptMark; \
