@@ -48,7 +48,6 @@ RUN set -eux; \
     apt-get clean; \
     \
     pip install --no-cache-dir -r requirements.txt; \
-    thumbor-doctor; \
     \
     apt-mark auto '.*' > /dev/null; \
     apt-mark manual curl libcairo2 graphicsmagick $savedAptMark; \
@@ -61,7 +60,9 @@ RUN set -eux; \
         | xargs -r apt-mark manual \
     ; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
-    rm -rf /var/lib/apt/lists/*;
+    rm -rf /var/lib/apt/lists/*; \
+# run after libs have been removed
+    thumbor-doctor;
 
 ARG SIMD_LEVEL
 
@@ -120,7 +121,9 @@ RUN set -eux; \
         | xargs -r apt-mark manual \
     ; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
-    rm -rf /var/lib/apt/lists/*;
+    rm -rf /var/lib/apt/lists/*; \
+# run after libs have been removed
+    thumbor-doctor;
 
 COPY conf/thumbor.conf.tpl /app/thumbor.conf.tpl
 COPY conf/circus.ini.tpl /etc/circus.ini.tpl
