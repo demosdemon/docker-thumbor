@@ -17,7 +17,7 @@ IMAGE_PREFIX=${IMAGE_PREFIX:-minimalcompact}
 @build --pull -f python-boost/Dockerfile -t "${IMAGE_PREFIX}/python-boost" python-boost/
 
 @build --build-arg "IMAGE_PREFIX=${IMAGE_PREFIX}" -f thumbor/Dockerfile -t "${IMAGE_PREFIX}/thumbor" thumbor/
-
+exit 0
 # introspecting version by running the built image
 THUMBOR_VERSION=$(docker run --rm "${IMAGE_PREFIX}/thumbor" bash -c "python -c 'import thumbor; print(thumbor.__version__)'")
 echo "THUMBOR VERSION: ${THUMBOR_VERSION}"

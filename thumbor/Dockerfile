@@ -35,6 +35,7 @@ RUN set -eux; \
     apt-get autoremove -y; \
     apt-get install --no-install-recommends -y \
         build-essential \
+        curl \
         git \
         libcurl4-openssl-dev \
         libgraphicsmagick++1-dev \
@@ -49,7 +50,7 @@ RUN set -eux; \
     pip install --no-cache-dir -r requirements.txt; \
     \
     apt-mark auto '.*' > /dev/null; \
-    apt-mark manual libcairo2 graphicsmagick $savedAptMark; \
+    apt-mark manual curl libcairo2 graphicsmagick $savedAptMark; \
     find /usr/local -type f -executable -exec ldd '{}' ';' \
         | awk '/=>/ { print $(NF-1) }' \
         | sort -u \
