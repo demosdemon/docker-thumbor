@@ -13,13 +13,11 @@ WORKDIR /app
 COPY requirements.txt requirements.txt
 
 # TODO: these apt packages may still be needed
-# graphicsmagick \
 # libfreetype6-dev \
 # libfribidi-dev \
 # libgraphicsmagick-q16-3 \
 # libgraphicsmagick++3 \
 # libharfbuzz-dev \
-# libjpeg-turbo-progs \
 # libopenjp2-7-dev \
 # libwebp-dev \
 # libxcb1-dev \
@@ -44,7 +42,7 @@ RUN set -eux; \
         libssl-dev \
         libcairo2-dev \
         graphicsmagick \
-        jpegtran \
+        libjpeg-turbo-progs \
         ffmpeg \
         gifsicle \
     ; \
@@ -57,7 +55,7 @@ RUN set -eux; \
         curl \
         libcairo2 \
         graphicsmagick \
-        jpegtran \
+        libjpeg-turbo-progs \
         ffmpeg \
         gifsicle \
         $savedAptMark; \
