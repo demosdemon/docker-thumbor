@@ -7,11 +7,12 @@ git+https://github.com/circus-tent/circus.git@2bedab09145a4959ce02b93777dbffbce5
 
 cairosvg
 circus-web
+pyexiv2
+pycurl
 dateutils
 envtpl
 graphicsmagick-engine
 opencv-engine
-# opencv-python
 raven
 tc-prometheus
 # tc-aws

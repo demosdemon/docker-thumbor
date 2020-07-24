@@ -49,6 +49,8 @@ psutil==5.7.2             # via circus
 pyasn1-modules==0.2.8     # via oauth2client
 pyasn1==0.4.8             # via oauth2client, pyasn1-modules, rsa
 pycparser==2.20           # via cffi
+pycurl==7.43.0.5          # via -r requirements.in
+pyexiv2==2.3.1            # via -r requirements.in
 pylibmc==1.6.1            # via thumbor-memcached
 pymongo==3.10.1           # via tc-mongodb
 pyres==1.5                # via remotecv
